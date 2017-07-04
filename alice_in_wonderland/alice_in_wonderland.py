@@ -1,4 +1,5 @@
-import data
+#!/usr/bin/python
+from data import DATA_LIB
 import numpy
 from keras.models import Sequential
 from keras.layers import Dense
@@ -6,11 +7,9 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
-
-DATA_LIB="../data/11-0.txt"
 if __name__=="__main__":
 	#load the raw ascii text
-	filename = DATA_LIB
+	filename = DATA_LIB+"/11-0.txt"
 	raw_text = open(filename).read()
 	raw_text = raw_text.lower()
 	
