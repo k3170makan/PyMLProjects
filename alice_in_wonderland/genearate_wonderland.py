@@ -69,7 +69,7 @@ if __name__=="__main__":
 		index = numpy.argmax(prediction)
 		result  = int_to_char[index]
 		stdout.write(result)
-		pattern.append(index+1)
+		pattern.append(index)
 		pattern = pattern[1:len(pattern)]	
 	print "[*] done"
 
