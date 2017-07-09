@@ -10,12 +10,18 @@ from keras.utils import np_utils
 from sys import argv
 from sys import stdout
 from sys import exit
+"""
+* added support for larger neural net. 
+* 13/Jul start collecting Trump speeches
+* 13/Jul start collecting Rap lyrices from JayZ
+* 
+"""
 if __name__=="__main__":
 	#ill modularize this eventually	
-	if len(argv) != 2:
-		print "Usage: %s [weights filename]" % (argv[0])
+	if len(argv) != 3:
+		print "Usage: %s [data file] [weights filename]" % (argv[0])
 		exit(1)
-	data_filename = DATA_LIB+"/11-0.txt"
+	data_filename = argv[1]
 	raw_text = open(data_filename).read()
 	raw_text = raw_text.lower()
 	
@@ -26,8 +32,8 @@ if __name__=="__main__":
 	int_to_char = dict((i,c) for i,c in enumerate(chars))	
 	char_to_int = dict((c,i) for i,c in enumerate(chars))
 	
-	print "Total Characters:", n_chars
-	print "Total Vocab:", n_vocab
+	print "[*] Total Characters:", n_chars
+	print "[*] Total Vocab:", n_vocab
 
 	seq_length = 100
 	dataX = []
@@ -42,7 +48,7 @@ if __name__=="__main__":
 		dataY.append(char_to_int[seq_out])
 				
 	n_patterns = len(dataX)
-	print "Total Patterns:", n_patterns
+	print "[*] Total Patterns:", n_patterns
 	
 	X = numpy.reshape(dataX,(n_patterns,seq_length,1))
 	X = X / float(n_vocab)
@@ -53,14 +59,16 @@ if __name__=="__main__":
 	model = Sequential()
 	model.add(LSTM(256,input_shape=(X.shape[1],X.shape[2])))
 	model.add(Dropout(0.2))
+	model.add(LSTM(256))
+	model.add(Dropout(0.2))
 	model.add(Dense(y.shape[1],activation='softmax'))
 	model.load_weights(weights_filename)
 
 	start = numpy.random.randint(0,len(dataX) - 1)
 	pattern = dataX[start]
 	seed = ''.join([int_to_char[value] for value in pattern]), " "
-	print "[*] pattern:",pattern
-	print "[*] Seed: ", seed
+	#print "[*] pattern:",pattern
+	print "[*] Seed: ", seed[0], 
 	
 	for i in range(1000):
 		x = numpy.reshape(pattern,(1,len(pattern),1))
@@ -71,6 +79,6 @@ if __name__=="__main__":
 		stdout.write(result)
 		pattern.append(index)
 		pattern = pattern[1:len(pattern)]	
-	print "[*] done"
+	print "\n[*] done"
 
 

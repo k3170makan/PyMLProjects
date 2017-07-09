@@ -7,9 +7,10 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
+SEQ_LEN = 100
 if __name__=="__main__":
 	#load the raw ascii text
-	filename = DATA_LIB+"/11-0.txt"
+	filename = DATA_LIB+"/11-0_cleaned.txt"
 	raw_text = open(filename).read()
 	raw_text = raw_text.lower()
 	
@@ -19,10 +20,10 @@ if __name__=="__main__":
 	
 	n_chars = len(raw_text)
 	n_vocab = len(chars)
-	print "Total Characters:", n_chars
-	print "Total Vocab:", n_vocab
+	print "[*] Total Characters:", n_chars
+	print "[*] Total Vocab:", n_vocab
 
-	seq_length = 100
+	seq_length = SEQ_LEN
 	dataX = []
 	dataY = []
 	
@@ -35,7 +36,7 @@ if __name__=="__main__":
 		dataY.append(char_to_int[seq_out])
 		
 	n_patterns = len(dataX)
-	print "Total Patterns:", n_patterns
+	print "[*] Total Patterns:", n_patterns
 
 	X = numpy.reshape(dataX,(n_patterns,seq_length,1))
 	X = X/float(n_vocab) #seems like a normalization of the vector weights?
@@ -45,13 +46,15 @@ if __name__=="__main__":
 	#print X
 	#print y	
 	model = Sequential()
-	model.add(LSTM(256,input_shape=(X.shape[1],X.shape[2])))
+	model.add(LSTM(256,input_shape=(X.shape[1],X.shape[2]),return_sequences=True))
+	model.add(Dropout(0.2))
+	model.add(LSTM(256))
 	model.add(Dropout(0.2))
 	model.add(Dense(y.shape[1],activation='softmax'))
 	model.compile(loss='categorical_crossentropy',optimizer='adam')
 
-	filepath="weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
+	filepath="seq-%d-weights-improvement-{epoch:02d}-{loss:.4f}.hdf5" % (SEQ_LEN)
 	checkpoint = ModelCheckpoint(filepath,monitor='loss',verbose=1,save_best_only=True,mode='min')
 	callback_list = [checkpoint]
 	#fit the model
-	model.fit(X,y,epochs=20, batch_size=128,callbacks=callback_list) 	
+	model.fit(X,y,epochs=50, batch_size=128,callbacks=callback_list) 	
