@@ -76,3 +76,9 @@ christian
 
 The only thing you need to get this up and running is a working python install and whatever else you need to run Keras, smoothly.
 Python Keras : https://keras.io/ 
+
+
+Further Reading and Similar ideas:
+*  http://www.ieeeconfpublishing.org/cpir/UploadedFiles/ver11.0.pdf 
+*  http://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/ 
+*  https://0day.work/using-neural-networks-for-password-cracking/ 
