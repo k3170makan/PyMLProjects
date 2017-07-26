@@ -1,4 +1,4 @@
-###Generating Passwords with an LSTM 
+#Generating Passwords with an LSTM 
 
 This project is for training an AI to learn the statistical patterns in how people construct passwords and use them
 to generate an infinite amount of the same "kind" of passwords. This is a potentially very successful way to guess
@@ -10,7 +10,7 @@ The project includes two scripts
 * `learn_passwords.py`  used to train the neural net on a set of passwords, this produces a set of weights.
 * `generate_passwords.py` used to generate passwords based on a trained set of weights.  
 
-#Training the Neural Net
+###Training the Neural Net
 In order to produce some AI that can already generate passwords based on a sample, the easiest way to do this
 is to feed the password list to the `learn_passwords.py` script as follows:
 `
@@ -36,7 +36,7 @@ This will produce a list of weights files (used to set up the neural net from sc
 -rw-rw-r-- 1 k3170makan k3170makan 2463936 Jul 25 18:32 seq-100-weights-improvement-49-1.8796.hdf5
 `
 
-#Generating Passwords
+###Generating Passwords
 In order to generate passwords you need to run the `generate_passwords.py` script, here's how to do that:
 
 `
