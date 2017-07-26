@@ -71,3 +71,8 @@ christian
 121212
 ```
 *some stderr output has been supressed, tensor flow and keras like to make a lot of noise hehe
+
+## Dependencies
+
+The only thing you need to get this up and running is a working python install and whatever else you need to run Keras, smoothly.
+Python Keras : https://keras.io/ 
