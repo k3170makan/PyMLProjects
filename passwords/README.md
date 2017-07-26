@@ -4,6 +4,12 @@ This project is for training an AI to learn the statistical patterns in how peop
 to generate an infinite amount of the same "kind" of passwords. This is a potentially very successful way to guess
 passwords since people often employ password "schemes" when choosing an easy to remember password. 
 
+More interestingly it might be able to mimic any decision made to incorporate public facing data, keywords or symbols 
+associated to a organization that could be used to construct a password pattern. Seasoned pentesters will often talk
+about decades old password schemes used as default or "reset" password data in large organizations like Banks and even Governments. In order to realistically assess the pervasiveness of this problem and emulate the adversarial advantage this might provide. This project offers one (potentially of many) automated AI driven means to emulate such an attack. 
+
+It also allows you to turn a small sample of passwords into an unending one ;) 
+
 ## How to use
 The project includes two scripts 
 
