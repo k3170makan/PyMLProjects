@@ -2,6 +2,7 @@
 import numpy
 from data import DATA_LIB
 from keras.models import Sequential
+from keras.callbacks import ModelCheckpoint
 from keras.layers import Dense
 
 def build():
@@ -11,12 +12,18 @@ def build():
 	model.add(Dense(1,activation='sigmoid')) #output layer
 	#could handle errors here in isolation ;)	
 	model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+
 	return model
+
 def fit(dataset, model):
 	X = dataset[:,0:8] #get first 8 fields
 	Y = dataset[:,8] #use 9th field as output 1 0r 0
 
-	model.fit(X,Y,epochs=150,batch_size=10)	
+	filepath="weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
+	checkpoint = ModelCheckpoint(filepath,monitor='loss',verbose=1,save_best_only=True,mode='min')
+	callback_list = [checkpoint]
+
+	model.fit(X,Y,epochs=250,batch_size=10)#,callbacks=callback_list)	
 	return #should there be a return value here? 
 def evaluate(model,dataset):
 	X = dataset[:,0:8]	
