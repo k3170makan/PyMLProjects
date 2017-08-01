@@ -4,13 +4,12 @@ Using an LSTM to learn how to generate XSS payloads like the best of them.
 The purpose here is to see if there is a unique design of LSTM that suits XSS payloads better
 as well as learning to adapt LSTM to the XSS injection problem.
 
-the idea is that you train an LSTM on a sample of payloads, once you have it trained well enough
+Essentially the idea is that you train an LSTM on a sample of payloads, once you have it trained well enough
 you can feed it an injection point i.e. the HTML before your injection point and it will generate
 payload based on what it was trained on. i.e. 
 
-if you give it a `<a href =` 
+If you give it a `<a href =` 
 it should spit out something like `JavaScriPT:aLert(11111111111111111111/**/)`
-
 
 ## Research Phases:
 
