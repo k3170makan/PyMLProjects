@@ -1,4 +1,4 @@
-# Classifying Phisphing Websties (Tutorial)
+# Classifying Phishing Websties (Tutorial)
 
 The following python script uses a simple 3 layer densely connected neural net in
 order to determine if a given url sample is most probably for a phishing site. 
