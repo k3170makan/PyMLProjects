@@ -23,7 +23,7 @@ if __name__=="__main__":
 		exit(1)
 	data_filename = argv[1]
 	raw_text = open(data_filename).read()
-	raw_text = raw_text.lower()
+	#raw_text = raw_text.lower() <--- removed lower conversion! accidentally left that in form alice in wonder land 0_o
 	
 	chars = sorted(list(set(raw_text)))
 	n_chars = len(raw_text)
@@ -57,9 +57,9 @@ if __name__=="__main__":
 	weights_filename = argv[2]
 	
 	model = Sequential()
-	model.add(LSTM(256,input_shape=(X.shape[1],X.shape[2]),return_sequences=True))
+	model.add(LSTM(128,input_shape=(X.shape[1],X.shape[2]),return_sequences=True))
 	model.add(Dropout(0.2))
-	model.add(LSTM(256))
+	model.add(LSTM(128))
 	model.add(Dropout(0.2))
 	model.add(Dense(y.shape[1],activation='softmax'))
 	model.load_weights(weights_filename)
@@ -81,5 +81,3 @@ if __name__=="__main__":
 		pattern.append(index)
 		pattern = pattern[1:len(pattern)]	
 	print "\n[*] done"
-
-
