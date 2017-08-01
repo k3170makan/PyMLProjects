@@ -41,4 +41,3 @@ if __name__=="__main__":
 	scores = evaluate(model,dataset)
 	print "[*] %s %.2f%%" % (model.metrics_names[1],scores[1]*100)	
 	print "[*] output: ",predict(model,dataset)
-
