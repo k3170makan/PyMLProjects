@@ -1,5 +1,21 @@
 # Generating XSS Payloads from Polyglot Files using Deep Learning
 
+The scripts below serve to generate fuzz data for websites by training a neural network designed and implemented in
+Keras to mimic the statstical patterns evident in the sequences of characters that make up an XSS payload. The essential 
+argument here is that since the text that makes up an XSS payload is essentially a sequence of numbers/characters, and 
+the selection probability of each characters in each position it appears can be modelled as essentially a 
+sequence prediction problem for a LSTM with rich enough representation mechanisms for a the given data set. I use a web 
+hacking experts list of preffered polyglot strings to train the network here.
+
+In a real web attack/testing scenario this network I believe can offer a good source of fuzz data 
+honed by the contributive efforts of an entire web hacking community and dynamically adjusted to its 
+trends and favored HTML/java/SVN trouble causing grammar hotspots i.e. perhaps web apps are toppling dew 
+to iframe onclick event handling more than SVN due to context of certain framework - you can then spin this 
+up and train it on some dirt iframe tags and you will have a good source of live/random fuzz data directly 
+hitting the iframe part of the grammar, further more you can probably very easily mix in and take out parts 
+of the grammar as you please by adjusting the training sample.
+ 
+
 ## How to use
 The project includes two scripts
 
