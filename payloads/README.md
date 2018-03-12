@@ -11,7 +11,7 @@ In a real web attack/testing scenario this network I believe can offer a good so
 honed by the contributive efforts of an entire web hacking community and dynamically adjusted to its 
 trends and favored HTML/java/SVN trouble causing grammar hotspots i.e. perhaps web apps are toppling dew 
 to iframe onclick event handling more than SVN due to context of certain framework - you can then spin this 
-up and train it on some dirt iframe tags and you will have a good source of live/random fuzz data directly 
+up and train it on some dirty/troublesome iframe tags and you will have a good source of live/random fuzz data directly 
 hitting the iframe part of the grammar, further more you can probably very easily mix in and take out parts 
 of the grammar as you please by adjusting the training sample.
  
