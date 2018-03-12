@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from data import DATA_LIB
 import numpy
 from sys import argv
 from keras.models import Sequential

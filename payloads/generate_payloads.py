@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import numpy
-from data import DATA_LIB
 from random import random
 from keras.models import Sequential
 from keras.layers import Dense
@@ -81,7 +80,7 @@ if __name__=="__main__":
 		pattern.append(index)
 		pattern = pattern[1:len(pattern)]	
 
-		if len(outstring) >= 100:
+		if len(outstring) >= 200:
 			start = numpy.random.randint(0,len(dataX) - 1)
 			pattern = dataX[start]
 			stdout.write("%s\n" % outstring)
