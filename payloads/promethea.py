@@ -117,8 +117,8 @@ if __name__=="__main__":
 	#ill modularize this eventually	
 	if len(argv) != 5:
 		print "Usage: %s [payload] [nchars] [data file] [weights filename]" % (argv[0])
-		print "Example: %s 'PHPSESSIONID=' 100 awesome_polyglots.txt weights-for-generating-xss-payloads.txt" % (argv[0])
-		print "Example: %s 'widget.php?username=' 100 more_polyglots.txt weights-for-generating-phpxss.txt" % (argv[0])
+		print "Example: %s 'javascript' 100 awesome_polyglots.txt weights-for-generating-xss-payloads.txt" % (argv[0])
+		print "Example: %s 'body onload=' 100 more_polyglots.txt weights-for-generating-phpxss.txt" % (argv[0])
 		exit(1)
 
 	payload = argv[1]
