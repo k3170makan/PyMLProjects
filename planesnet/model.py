@@ -83,6 +83,14 @@ class PlaneCNN:
 							callbacks=self.callbacks,\
 							verbose=1)		
 
+	def load_weights(self,weights=None):
+		if not self.model:
+			self.build()
+		if weights:
+			self.model.load_weights(weights)
+	def predict(self,x_input=None):
+		return self.model.predict(x=x_input,verbose=0)
+
 	def evaluate(self,x_test):
 		test_preds = self.model.predict(x_test)
 		return np.round(test_preds)
